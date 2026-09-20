@@ -3,47 +3,152 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Snapchat Login Mockup</title>
+  <title>Buddy Pass Sign In</title>
 
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       min-height: 100vh;
-      background: #fffc00;
+      background: #f2f2f2;
       font-family: Arial, sans-serif;
-      text-align: center;
+      color: #222;
     }
 
-    header {
-      padding: 35px 20px;
-      background: #fffc00;
-      color: white;
-      font-size: 36px;
+    .page {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 24px;
+    }
+
+    .card {
+      width: 330px;
+      min-height: 390px;
+      padding: 28px 14px;
+      background: white;
+      text-align: center;
+      border: 1px solid #e5e5e5;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    .logo {
+      margin-bottom: 10px;
+      font-size: 38px;
+    }
+
+    h1 {
+      max-width: 245px;
+      margin: 0 auto 16px;
+      font-size: 19px;
+      line-height: 1.3;
+    }
+
+    .demo-label {
+      margin-bottom: 18px;
+      color: #777;
+      font-size: 11px;
+    }
+
+    .field {
+      width: 100%;
+      height: 42px;
+      margin-bottom: 10px;
+      padding: 0 12px;
+      border: 1px solid #e5e5e5;
+      border-radius: 4px;
+      background: #f7f7f7;
+      font-size: 13px;
+    }
+
+    .field:disabled {
+      color: #999;
+      cursor: not-allowed;
+    }
+
+    .forgot {
+      display: block;
+      margin: 4px 2px 20px;
+      color: #777;
+      font-size: 10px;
+      text-align: right;
+    }
+
+    .login-button {
+      width: 75px;
+      height: 34px;
+      border: 0;
+      border-radius: 18px;
+      background: #ffd43b;
+      color: #222;
+      font-size: 12px;
       font-weight: bold;
+      cursor: not-allowed;
+    }
+
+    .signup {
+      margin-top: 16px;
+      font-size: 11px;
+    }
+
+    .signup a {
+      color: #222;
+      font-weight: bold;
+      text-decoration: none;
     }
 
     .notice {
-      max-width: 500px;
-      margin: 60px auto;
-      padding: 30px;
-      background: white;
-      color: #333;
-      border-radius: 15px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-    }
-
-    .notice h2 {
-      margin-top: 0;
+      max-width: 330px;
+      margin-top: 18px;
+      color: #777;
+      font-size: 11px;
+      text-align: center;
     }
   </style>
 </head>
 
 <body>
-  <header>Snapchat Login</header>
+  <main class="page">
+    <section class="card">
+      <div class="logo">🎟️</div>
 
-  <div class="notice">
-    <h2>Demo Mockup</h2>
-    <p>This is a visual design demo and does not collect login information.</p>
-  </div>
+      <h1>Sign in to claim your Buddy Pass</h1>
+
+      <div class="demo-label">
+        Demo form — no information is collected
+      </div>
+
+      <input
+        class="field"
+        type="text"
+        placeholder="Login"
+        disabled
+      >
+
+      <input
+        class="field"
+        type="password"
+        placeholder="Password"
+        disabled
+      >
+
+      <span class="forgot">Forgot password</span>
+
+      <button class="login-button" disabled>
+        Sign in
+      </button>
+    </section>
+
+    <p class="signup">
+      New here? <a href="#">Create an account</a>
+    </p>
+
+    <p class="notice">
+      This is an unofficial visual demo. Do not enter real login information.
+    </p>
+  </main>
 </body>
 </html>
