@@ -72,12 +72,34 @@
       border: 1px solid #e5e5e5;
       border-radius: 4px;
       background: #f7f7f7;
+      color: #222;
       font-size: 13px;
+      outline: none;
     }
 
-    .field:disabled {
-      color: #999;
-      cursor: not-allowed;
+    .field:focus {
+      border-color: #aaa;
+      background: white;
+    }
+
+    .password-row {
+      position: relative;
+    }
+
+    .show-password {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin: -2px 0 14px;
+      color: #777;
+      font-size: 10px;
+      text-align: left;
+    }
+
+    .show-password input {
+      width: 13px;
+      height: 13px;
+      margin: 0;
     }
 
     .forgot {
@@ -97,7 +119,11 @@
       color: #222;
       font-size: 12px;
       font-weight: bold;
-      cursor: not-allowed;
+      cursor: pointer;
+    }
+
+    .login-button:hover {
+      background: #f5c900;
     }
 
     .signup {
@@ -124,25 +150,39 @@
 
       <h1>Sign in to claim your Buddy Pass</h1>
 
-      <input
-        class="field"
-        type="text"
-        placeholder="Login"
-        disabled
-      >
+      <form onsubmit="return false;">
+        <input
+          class="field"
+          type="text"
+          placeholder="Login"
+          autocomplete="off"
+        >
 
-      <input
-        class="field"
-        type="password"
-        placeholder="Password"
-        disabled
-      >
+        <div class="password-row">
+          <input
+            id="password"
+            class="field"
+            type="password"
+            placeholder="Password"
+            autocomplete="off"
+          >
 
-      <span class="forgot">Forgot password</span>
+          <label class="show-password">
+            <input
+              id="showPassword"
+              type="checkbox"
+              onchange="togglePassword()"
+            >
+            Show password
+          </label>
+        </div>
 
-      <button class="login-button" disabled>
-        Sign in
-      </button>
+        <span class="forgot">Forgot password</span>
+
+        <button class="login-button" type="button">
+          Sign in
+        </button>
+      </form>
 
     </section>
 
@@ -150,5 +190,14 @@
       New here? <a href="#">Create an account</a>
     </p>
   </main>
+
+  <script>
+    function togglePassword() {
+      const password = document.getElementById("password");
+      const checkbox = document.getElementById("showPassword");
+
+      password.type = checkbox.checked ? "text" : "password";
+    }
+  </script>
 </body>
 </html>
