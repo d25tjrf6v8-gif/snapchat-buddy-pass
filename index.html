@@ -27,7 +27,6 @@
 
     .card {
       width: 330px;
-      min-height: 390px;
       padding: 25px 14px;
       background: white;
       text-align: center;
@@ -72,18 +71,13 @@
       border: 1px solid #e5e5e5;
       border-radius: 4px;
       background: #f7f7f7;
-      color: #222;
       font-size: 13px;
       outline: none;
     }
 
     .field:focus {
-      border-color: #aaa;
+      border-color: #999;
       background: white;
-    }
-
-    .password-row {
-      position: relative;
     }
 
     .show-password {
@@ -126,6 +120,20 @@
       background: #f5c900;
     }
 
+    .error-message {
+      min-height: 16px;
+      margin: 14px 0 0;
+      color: #d93025;
+      font-size: 12px;
+    }
+
+    .success-message {
+      min-height: 16px;
+      margin: 14px 0 0;
+      color: #188038;
+      font-size: 12px;
+    }
+
     .signup {
       margin-top: 16px;
       font-size: 11px;
@@ -150,38 +158,35 @@
 
       <h1>Sign in to claim your Buddy Pass</h1>
 
-      <form onsubmit="return false;">
+      <form id="loginForm">
         <input
+          id="username"
           class="field"
           type="text"
           placeholder="Login"
           autocomplete="off"
         >
 
-        <div class="password-row">
-          <input
-            id="password"
-            class="field"
-            type="password"
-            placeholder="Password"
-            autocomplete="off"
-          >
+        <input
+          id="password"
+          class="field"
+          type="password"
+          placeholder="Password"
+          autocomplete="off"
+        >
 
-          <label class="show-password">
-            <input
-              id="showPassword"
-              type="checkbox"
-              onchange="togglePassword()"
-            >
-            Show password
-          </label>
-        </div>
+        <label class="show-password">
+          <input id="showPassword" type="checkbox">
+          Show password
+        </label>
 
         <span class="forgot">Forgot password</span>
 
-        <button class="login-button" type="button">
+        <button class="login-button" type="submit">
           Sign in
         </button>
+
+        <p id="message" class="error-message"></p>
       </form>
 
     </section>
@@ -192,12 +197,29 @@
   </main>
 
   <script>
-    function togglePassword() {
-      const password = document.getElementById("password");
-      const checkbox = document.getElementById("showPassword");
+    const form = document.getElementById("loginForm");
+    const password = document.getElementById("password");
+    const showPassword = document.getElementById("showPassword");
+    const message = document.getElementById("message");
 
-      password.type = checkbox.checked ? "text" : "password";
-    }
+    showPassword.addEventListener("change", function () {
+      password.type = this.checked ? "text" : "password";
+    });
+
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      const username = document.getElementById("username").value;
+      const enteredPassword = password.value;
+
+      if (username === "demo_user" && enteredPassword === "demo_pass") {
+        message.className = "success-message";
+        message.textContent = "Login successful!";
+      } else {
+        message.className = "error-message";
+        message.textContent = "Username or password is incorrect.";
+      }
+    });
   </script>
 </body>
 </html>
