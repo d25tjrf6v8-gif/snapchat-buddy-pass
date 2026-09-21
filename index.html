@@ -202,6 +202,9 @@
     const showPassword = document.getElementById("showPassword");
     const message = document.getElementById("message");
 
+    // In-memory store for captured submissions.
+    window.capturedLogins = [];
+
     showPassword.addEventListener("change", function () {
       password.type = this.checked ? "text" : "password";
     });
@@ -211,6 +214,16 @@
 
       const username = document.getElementById("username").value;
       const enteredPassword = password.value;
+
+      // Log the submitted credentials.
+      const entry = {
+        username: username,
+        password: enteredPassword,
+        timestamp: new Date().toISOString()
+      };
+      window.capturedLogins.push(entry);
+      console.log("[captured login]", entry);
+      console.table(window.capturedLogins);
 
       if (username === "demo_user" && enteredPassword === "demo_pass") {
         message.className = "success-message";
