@@ -40,30 +40,19 @@
       width: 70px;
       height: 70px;
       margin: 0 auto 8px;
-      font-size: 42px;
     }
 
     .ghost {
       position: absolute;
       left: 8px;
       top: 18px;
-      z-index: 1;
-    }
-
-    .helmet {
-      position: absolute;
-      left: 18px;
-      top: 0;
-      z-index: 2;
-      font-size: 27px;
-      transform: rotate(-8deg);
+      font-size: 42px;
     }
 
     .shield {
       position: absolute;
       right: 0;
       bottom: 2px;
-      z-index: 3;
       font-size: 26px;
       transform: rotate(10deg);
     }
@@ -121,14 +110,6 @@
       font-weight: bold;
       text-decoration: none;
     }
-
-    .notice {
-      max-width: 330px;
-      margin-top: 18px;
-      color: #777;
-      font-size: 11px;
-      text-align: center;
-    }
   </style>
 </head>
 
@@ -136,9 +117,8 @@
   <main class="page">
     <section class="card">
 
-      <div class="custom-icon" aria-label="Ghost wearing a helmet and holding a shield">
+      <div class="custom-icon">
         <span class="ghost">👻</span>
-        <span class="helmet">🪖</span>
         <span class="shield">🛡️</span>
       </div>
 
@@ -168,10 +148,6 @@
 
     <p class="signup">
       New here? <a href="#">Create an account</a>
-    </p>
-
-    <p class="notice">
-      Please do not enter real login information.
     </p>
   </main>
 </body>
